@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <h2 class="h2">History</h2>
+    <br>
+    <p>Positive values mean shares bought, negatives values mean shares sold.</p>
+    <br>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">symbol</th>
+                <th scope="col">Shares</th>
+                <!-- current price -->
+                <th scope="col">Price</th>
+                <!--current value of equity -->
+                <th scope="col">Cost</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for stock in transactions %}
+                <tr>
+                    <td>{{ stock["symbol"] }}</td>
+                    <td>{{ stock["price"] }}</td>
+                    <td>{{ stock["shares"] }}</td>
+                    <td>{{ stock["cost"] }}</td>
+                </tr>
+            {% endfor %}
+
+            <tr>
+                <td>Cash</td>
+                <td></td>
+                <td></td>
+                <td>{{ cash }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}
